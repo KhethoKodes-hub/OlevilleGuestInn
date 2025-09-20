@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oleville Guest Inn & Conferencing - Kuruman</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #f8f9fc 0%, #e6e9f0 100%);
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1a2a6c 0%, #2a4b8c 50%, #3a6bc8 100%);
+            padding: 1rem 0;
+            box-shadow: 0 4px 20px rgba(26, 42, 108, 0.3);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: shimmer 8s infinite linear;
+        }
+
+        @keyframes shimmer {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            text-shadow: 3px 3px 8px rgba(0,0,0,0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-links li a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.2);
+            transition: left 0.3s ease;
+        }
+
+        .nav-links li a:hover::before {
+            left: 0;
+        }
+
+        .nav-links li a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 42, 108, 0.7), rgba(42, 75, 140, 0.7)), 
+                        url('./assets/guest.png');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            animation: slideInLeft 1s ease-out 0.3s both;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: slideInRight 1s ease-out 0.6s both;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #3a6bc8, #5a8be8);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(58, 107, 200, 0.4);
+            animation: pulse 2s infinite;
+            margin: 0 10px;
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid #3a6bc8;
+            color: #fff;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 4px 15px rgba(58, 107, 200, 0.4); }
+            50% { box-shadow: 0 6px 25px rgba(58, 107, 200, 0.6); }
+            100% { box-shadow: 0 4px 15px rgba(58, 107, 200, 0.4); }
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(58, 107, 200, 0.6);
+            animation: none;
+        }
+
+        .cta-button.secondary:hover {
+            background: rgba(58, 107, 200, 0.2);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.4s; }
+        .section:nth-child(4) { animation-delay: 0.6s; }
+
+        .section h2 {
+            font-size: 2.5rem;
+            color: #1a2a6c;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(45deg, #3a6bc8, #5a8be8);
+            border-radius: 2px;
+        }
+
+        .about-content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .about-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .location-highlight {
+            display: flex;
+            align-items: center;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(26, 42, 108, 0.1);
+            border-radius: 10px;
+        }
+
+        .location-highlight i {
+            font-size: 2rem;
+            color: #1a2a6c;
+            margin-right: 1rem;
+        }
+
+        /* Facilities Grid */
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .facility-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .facility-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(58, 107, 200, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .facility-card:hover::before {
+            left: 100%;
+        }
+
+        .facility-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .facility-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #1a2a6c, #3a6bc8);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .facility-card:hover .facility-icon {
+            transform: rotate(360deg) scale(1.1);
+        }
+
+        /* Rooms Section */
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .room-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .room-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .room-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #3a6bc8, #5a8be8);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        .room-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .room-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .room-card:hover .room-image img {
+            transform: scale(1.1);
+        }
+
+        .room-header {
+            padding: 2rem;
+            background: linear-gradient(135deg, #1a2a6c, #3a6bc8);
+            color: white;
+            text-align: center;
+        }
+
+        .room-content {
+            padding: 2rem;
+        }
+
+        .amenities {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.5rem;
+        }
+
+        .amenities li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .amenities li:hover {
+            transform: translateX(10px);
+            color: #1a2a6c;
+        }
+
+        .amenities li::before {
+            content: '✓';
+            color: #3a6bc8;
+            font-weight: bold;
+            margin-right: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .amenities li:hover::before {
+            transform: scale(1.3);
+        }
+
+        .room-cta {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+
+        /* Conference Section */
+        .conference-content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .conference-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .conference-image {
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .conference-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .conference-content:hover .conference-image img {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .conference-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Events Section */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .event-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .event-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .event-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .event-card:hover .event-image img {
+            transform: scale(1.1);
+        }
+
+        .event-content {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(135deg, #1a2a6c, #3a6bc8);
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            margin: 4rem 0;
+            text-align: center;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            text-align: right;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #1a2a6c, #3a6bc8);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(26, 42, 108, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .contact-info:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(26, 42, 108, 0.5);
+        }
+
+        .contact-item {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-item i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .contact-item:hover {
+            transform: scale(1.05);
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #1a2a6c, #3a6bc8);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(26, 42, 108, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: #1a2a6c;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: left;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links h3 {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-links h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: #3a6bc8;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #3a6bc8;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: #3a6bc8;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(135deg, #1a2a6c 0%, #2a4b8c 100%);
+                flex-direction: column;
+                padding: 1rem 0;
+                text-align: center;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .container {
+                padding: 2rem 1rem;
+            }
+
+            .cta-buttons {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .cta-button {
+                margin: 0;
+            }
+        }
+
+        /* Floating animation for decorative elements */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #1a2a6c, #3a6bc8);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(26, 42, 108, 0.3);
+            transition: all 0.3s ease;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(26, 42, 108, 0.5);
+        }
+    </style>
+</head>
+<body>
+   <header>
+        <nav>
+            <div class="logo">
+                <span>Oleville</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <!--<li><a href="conference.html">Conference</a></li>-->
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="floating">Oleville Guest Inn & Conferencing</h1>
+            <p>Experience the vibrant and dynamic Kuruman touch in our luxury 4-star accommodation</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="cta-button">Book Your Stay</a>
+                <a href="contact.html" class="cta-button secondary">Explore Rooms</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="section" id="about">
+            <h2>Welcome to Oleville</h2>
+            <div class="about-content">
+                <p>Oleville Guest Inn and Conferencing is a deluxe guest accommodation located in Kuruman in the Northern Cape, just 2.7 km from Kuruman Mall. Our guest house offers a great home away from home experience with 5 Standard en-suite rooms and 4 Executive en-suite rooms. Oleville is the perfect platform to discover the vibrant and dynamic Kuruman touch.</p>
+                <div class="location-highlight">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h3>Prime Location</h3>
+                        <p>Conveniently located just 2.7km from Kuruman Mall</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="facilities">
+            <h2>Our Facilities</h2>
+            <div class="facilities-grid">
+                <div class="facility-card">
+                    <div class="facility-icon">🏊</div>
+                    <h3>Old School Swimming Pool</h3>
+                    <p>Relax and unwind in our charming vintage-style swimming pool</p>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-icon">🔥</div>
+                    <h3>Braai Area</h3>
+                    <p>Enjoy authentic South African braai experiences in our dedicated outdoor area</p>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-icon">🌳</div>
+                    <h3>Big Garden</h3>
+                    <p>Stroll through our beautiful expansive gardens and enjoy nature</p>
+                </div>
+                <div class="facility-card">
+                    <div class="facility-icon">🏢</div>
+                    <h3>Conference Centre</h3>
+                    <p>State-of-the-art facilities for your business meetings and events</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="rooms">
+            <h2>Our Accommodation</h2>
+            <div class="rooms-grid">
+                <div class="room-card">
+                    <div class="room-badge">5 Rooms Available</div>
+                    <div class="room-image">
+                        <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Standard Room">
+                    </div>
+                    <div class="room-header">
+                        <h3>Standard Rooms</h3>
+                        <p>Comfortable & Affordable</p>
+                    </div>
+                    <div class="room-content">
+                        <p>Our Standard rooms provide all the amenities you would expect from luxury 4-star accommodation.</p>
+                        <ul class="amenities">
+                            <li>Bar fridge</li>
+                            <li>Microwave</li>
+                            <li>Flat Screen TV</li>
+                            <li>All DSTV channels</li>
+                            <li>Air-conditioning</li>
+                            <li>Electric blanket</li>
+                            <li>Wi-Fi</li>
+                            <li>Clean bathrooms</li>
+                            <li>Office table and chair</li>
+                            <li>Towels & essentials</li>
+                        </ul>
+                        <div class="room-cta">
+                            <a href="#contact" class="cta-button">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="room-card">
+                    <div class="room-badge">4 Rooms Available</div>
+                    <div class="room-image">
+                        <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Executive Room">
+                    </div>
+                    <div class="room-header">
+                        <h3>Executive Rooms</h3>
+                        <p>Luxury & Premium Comfort</p>
+                    </div>
+                    <div class="room-content">
+                        <p>Decorated with flair and style, featuring exquisite Egyptian linen and soundproof walls for ultimate comfort.</p>
+                        <ul class="amenities">
+                            <li>All Standard amenities</li>
+                            <li>Soundproof walls</li>
+                            <li>Egyptian linen</li>
+                            <li>Comfortable couch</li>
+                            <li>Premium styling</li>
+                            <li>Enhanced comfort</li>
+                            <li>Bar fridge</li>
+                            <li>Microwave</li>
+                            <li>Flat Screen TV</li>
+                            <li>All DSTV channels</li>
+                        </ul>
+                        <div class="room-cta">
+                            <a href="#contact" class="cta-button">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="conference">
+            <h2>Conference Centre</h2>
+            <div class="conference-content">
+                <div>
+                    <p>Our conference centre is the embodiment of the perfect event venue, no matter how large or small the event is. Oleville events excel in the three essential ingredients of successful conferences: superb cuisine, impeccable service, and an elegant atmosphere.</p>
+                    <br>
+                    <p>Our talented team works tirelessly to ensure your event is a success with that personal touch that optimizes our events.</p>
+                    <div class="room-cta" style="margin-top: 2rem;">
+                        <a href="#contact" class="cta-button">Inquire About Events</a>
+                    </div>
+                </div>
+                <div class="conference-image">
+                    <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Conference Room">
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="events">
+            <h2>Events & Celebrations</h2>
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="assets/wedding.png" alt="Wedding Event">
+                    </div>
+                    <div class="event-content">
+                        <h3>Weddings</h3>
+                        <p>Celebrate your special day in our elegant venue with impeccable service.</p>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="assets/meeting.png" alt="Business Meeting">
+                    </div>
+                    <div class="event-content">
+                        <h3>Business Events</h3>
+                        <p>Professional setting for meetings, conferences, and corporate events.</p>
+                    </div>
+                </div>
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="assets/celebration.png" alt="Celebration">
+                    </div>
+                    <div class="event-content">
+                        <h3>Celebrations</h3>
+                        <p>Birthdays, anniversaries, and special occasions made memorable.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="conference-content" style="margin-top: 2rem;">
+                <p>Whether you prefer an indoor or outdoor event, formal or celebratory occasions, we've got you covered. Oleville offers the best event venue for any occasion.</p>
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <h2>What Our Guests Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "The executive room was exceptional! The soundproof walls made for a peaceful stay, and the Egyptian linen was incredibly comfortable."
+                    </div>
+                    <div class="testimonial-author">- Sarah M.</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "We hosted our company conference at Oleville and were impressed with the professional service and excellent facilities."
+                    </div>
+                    <div class="testimonial-author">- James T.</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "The perfect home away from home. The braai area and pool made our family vacation truly memorable."
+                    </div>
+                    <div class="testimonial-author">- The Ndlovu Family</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="contact">
+            <h2>Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>Tel: 053 712 0740</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>Cell: 082 6216905</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email: info@oleville.co.za</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>13 Springbok Street, Kuruman, 8460</span>
+                    </div>
+                    <p style="margin-top: 2rem; font-style: italic;">If you are looking for the best quality in town, we've got you covered!</p>
+                </div>
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form id="bookingForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Interest In</label>
+                            <select id="service">
+                                <option value="accommodation">Accommodation</option>
+                                <option value="conference">Conference/Events</option>
+                                <option value="both">Both</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-about">
+                <div class="footer-logo">Oleville</div>
+                <p>Experience the vibrant and dynamic Kuruman touch in our luxury 4-star accommodation and conference facilities.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#rooms">Rooms</a></li>
+                    <li><a href="#conference">Conference</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Contact Info</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> 13 Springbok Street, Kuruman</li>
+                    <li><i class="fas fa-phone"></i> 053 712 0740</li>
+                    <li><i class="fas fa-envelope"></i> info@oleville.co.za</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Oleville Guest Inn & Conferencing. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        // Add smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add intersection observer for animation triggers
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Mobile menu toggle
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Back to top button
+        const backToTopBtn = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('active');
+            } else {
+                backToTopBtn.classList.remove('active');
+            }
+        });
+
+        // Form submission
+        const bookingForm = document.getElementById('bookingForm');
+        
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your inquiry! We will contact you shortly.');
+            bookingForm.reset();
+        });
+    </script>
+</body>
+</html>
